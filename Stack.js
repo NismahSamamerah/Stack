@@ -13,15 +13,18 @@ function addNew(value) {
 
 function push() {
     let item = addInput.value;
+    if (!item.length) {
+        warning.classList.remove('hidden-item');
+        return;
+    }
+    if (!warning.classList.contains('hidden-item')) {
+        warning.classList.add('hidden-item');
+    }
     addNew(item);
     addInput.value = '';
 }
 
 function pop() {
 
-    for(item of stack.children){
-        if(item = stack.firstElementChild){
-            item.style.display = 'none';
-        }
-    }
+    stack.removeChild(stack.firstChild);
 }
